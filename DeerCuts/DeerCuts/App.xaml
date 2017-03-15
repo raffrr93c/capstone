@@ -1,0 +1,43 @@
+﻿<Application x:Class="DeerCuts.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DeerCuts"
+             StartupUri="Login.xaml">
+    <Application.Resources>
+        <Style x:Key="bgdGrey" TargetType="Window">
+            <Setter Property="Window.Background" Value="#333333"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="#AEFFA8" />
+            <Setter Property="Background" Value="#333333" />
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="BorderBrush" Value="#AEFFA8"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#AEFFA8" />
+            <Setter Property="Background" Value="#333333" />
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#4d4d4d"/>
+            <Setter Property="Foreground" Value="#AEFFA8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#3d3d3d"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Application.Resources>
+</Application>

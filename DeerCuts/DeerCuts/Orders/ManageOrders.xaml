@@ -1,0 +1,20 @@
+﻿<Window x:Class="DeerCuts.ManageOrders"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeerCuts"
+        mc:Ignorable="d"
+        Style="{DynamicResource bgdGrey}"
+        Title="ManageOrders" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="143*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="btnNewOrder" Content="Place Order" HorizontalAlignment="Left" Margin="59,25,0,0" VerticalAlignment="Top" Width="175" Height="65" Click="btnNewOrder_Click" FontSize="16"/>
+        <Button x:Name="btnUpdateOrder" Content="Update Order" HorizontalAlignment="Left" Margin="59,95,0,0" VerticalAlignment="Top" Width="175" Height="65" Click="btnUpdateOrder_Click" FontSize="16"/>
+        <Button x:Name="btnCheckOrder" Content="Find Order" HorizontalAlignment="Left" Margin="59,165,0,0" VerticalAlignment="Top" Width="175" Height="65" Click="btnCheckOrder_Click" FontSize="16"/>
+
+    </Grid>
+</Window>

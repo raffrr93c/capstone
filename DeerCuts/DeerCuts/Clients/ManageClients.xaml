@@ -1,0 +1,16 @@
+﻿<Window x:Class="DeerCuts.ManageClients"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeerCuts"
+        mc:Ignorable="d"
+        Style="{DynamicResource bgdGrey}"
+        Title="ManageClients" Height="300" Width="300">
+    <Grid>
+        <Button x:Name="btnCreateClient" Content="Create Client" HorizontalAlignment="Left" Margin="50,26,0,0" VerticalAlignment="Top" Width="201" Height="58" Click="btnCreateClient_Click"/>
+        <Button x:Name="btnUpdateClient" Content="Update Client" HorizontalAlignment="Left" Margin="50,89,0,0" VerticalAlignment="Top" Width="201" Height="58" Click="btnUpdateClient_Click"/>
+        <Button x:Name="btnFindClient" Content="Find Client" HorizontalAlignment="Left" Margin="50,152,0,0" VerticalAlignment="Top" Width="201" Height="58" Click="btnFindClient_Click"/>
+
+    </Grid>
+</Window>
