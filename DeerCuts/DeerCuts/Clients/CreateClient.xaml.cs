@@ -58,12 +58,12 @@ namespace DeerCuts.Clients
                 }
                 else
                 {
-                    MessageBox.Show("Failed", "failue");
+                    MessageBox.Show("Failure to save Customer data, please try again", "Failed");
                 }
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Exception Occurred", exc.ToString());
+                MessageBox.Show(exc.ToString(), "Exception Occurred");
             }
            
         }
@@ -78,7 +78,7 @@ namespace DeerCuts.Clients
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Exception Occurred", exc.ToString());
+                MessageBox.Show(exc.ToString(), "Exception Occurred");
             }
 
         }

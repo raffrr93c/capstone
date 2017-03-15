@@ -36,3 +36,41 @@ c:\users\zabuz\documents\visual studio 2015\Projects\DeerCuts\DeerCuts\bin\Debug
 c:\users\zabuz\documents\visual studio 2015\Projects\DeerCuts\DeerCuts\bin\Debug\Newtonsoft.Json.dll
 c:\users\zabuz\documents\visual studio 2015\Projects\DeerCuts\DeerCuts\bin\Debug\Newtonsoft.Json.xml
 C:\Users\zabuz\documents\visual studio 2015\Projects\DeerCuts\DeerCuts\obj\Debug\App.baml
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\bin\Debug\DeerCuts.exe.config
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\DeerCuts.exe
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\DeerCuts.pdb
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\bin\Debug\DeerCuts.exe
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\bin\Debug\DeerCuts.pdb
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\bin\Debug\MySql.Data.dll
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\bin\Debug\Newtonsoft.Json.dll
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\bin\Debug\Newtonsoft.Json.xml
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\DeerCuts.csprojResolveAssemblyReference.cache
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Clients\CreateClient.g.cs
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Clients\FindClient.g.cs
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Clients\UpdateClient.g.cs
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Dashboard.g.cs
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Orders\CreateOrder.g.cs
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Orders\FindOrder.g.cs
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Orders\UpdateOrder.g.cs
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Reports\GenerateReports.g.cs
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Login.g.cs
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Clients\ManageClients.g.cs
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Orders\ManageOrders.g.cs
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\App.g.cs
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\DeerCuts_MarkupCompile.cache
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\DeerCuts_MarkupCompile.lref
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\App.baml
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Clients\CreateClient.baml
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Clients\FindClient.baml
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Clients\UpdateClient.baml
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Dashboard.baml
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Orders\CreateOrder.baml
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Orders\FindOrder.baml
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Orders\UpdateOrder.baml
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Reports\GenerateReports.baml
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Login.baml
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Clients\ManageClients.baml
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Orders\ManageOrders.baml
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\DeerCuts.g.resources
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\DeerCuts.Properties.Resources.resources
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\DeerCuts.csproj.GenerateResource.Cache

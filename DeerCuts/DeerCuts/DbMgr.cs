@@ -29,7 +29,7 @@ public class DbMgr
         }
         catch (MySqlException exc)
         {
-            System.Windows.MessageBox.Show("Exception Occurred", exc.ToString());
+            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred Connection Failed");
             return false;
         }
 
@@ -50,7 +50,7 @@ public class DbMgr
         }
         catch (Exception exc)
         {
-            System.Windows.MessageBox.Show("Exception Occurred", exc.ToString());
+            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return false;
         }
 
@@ -68,7 +68,7 @@ public class DbMgr
         }
         catch (Exception exc)
         {
-            System.Windows.MessageBox.Show("Exception Occurred", exc.ToString());
+            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return false;
         }
 
@@ -111,7 +111,7 @@ public class DbMgr
         }
         catch (Exception exc)
         {
-            System.Windows.MessageBox.Show("Exception Occurred", exc.ToString());
+            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return false;
         }
 
@@ -165,7 +165,7 @@ public class DbMgr
         }
         catch (Exception exc)
         {
-            System.Windows.MessageBox.Show("Exception Occurred", exc.ToString());
+            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return false;
         }
 
@@ -215,7 +215,7 @@ public class DbMgr
         }
         catch (Exception exc)
         {
-            System.Windows.MessageBox.Show("Exception Occurred", exc.ToString());
+            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return false;
         }
 
@@ -277,7 +277,7 @@ public class DbMgr
         }
         catch (Exception exc)
         {
-            System.Windows.MessageBox.Show("Exception Occurred", exc.ToString());
+            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return false;
         }
 
@@ -324,7 +324,7 @@ public class DbMgr
         }
         catch (Exception exc)
         {
-            System.Windows.MessageBox.Show("Exception Occurred", exc.ToString());
+            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return false;
         }
 
@@ -362,28 +362,11 @@ public class DbMgr
                 tempCustomers.Add(tempCustomer);
             }
             this.close();
-            this.connect();
-            foreach (Customer customer in tempCustomers)
-            {
-                List<Order> tempList = new List<Order>();
-                MySqlCommand command2 = connection.CreateCommand();
-                command2.CommandText = "SELECT * FROM Order WHERE customer_id=@customerid";
-                command2.Prepare();
-                command2.Parameters.AddWithValue("@customerid", customer.getId());
-                ordersFromDb = command.ExecuteReader();
-                while (ordersFromDb.Read())
-                {
-                    Order tempOrder = new Order();
-                    tempOrder.setId(ordersFromDb.GetInt32(0));
-                    tempList.Add(tempOrder);
-                }
-                customer.setOrderList(tempList);
-            }
             return tempCustomers;
         }
         catch (Exception exc)
         {
-            System.Windows.MessageBox.Show("Exception Occurred", exc.ToString());
+            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred Retrieval");
             return new List<Customer>();
         }
 
@@ -414,7 +397,7 @@ public class DbMgr
         }
         catch (Exception exc)
         {
-            System.Windows.MessageBox.Show("Exception Occurred", exc.ToString());
+            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return new List<Employee>();
         }
 
@@ -445,7 +428,7 @@ public class DbMgr
         }
         catch (Exception exc)
         {
-            System.Windows.MessageBox.Show("Exception Occurred", exc.ToString());
+            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return new List<Order>();
         }
 
@@ -476,7 +459,7 @@ public class DbMgr
         }
         catch (Exception exc)
         {
-            System.Windows.MessageBox.Show("Exception Occurred", exc.ToString());
+            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return new List<Deer>();
         }
 
