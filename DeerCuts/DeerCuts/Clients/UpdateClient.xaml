@@ -27,7 +27,7 @@
         <TextBox x:Name="txtLicenseNumber" HorizontalAlignment="Left" Height="23" Margin="134,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="24" Margin="134,7,0,0" VerticalAlignment="Top" Width="211"/>
         <Button x:Name="btnDash" Content="Cancel" HorizontalAlignment="Left" Height="20" Margin="210,232,0,0" VerticalAlignment="Top" Width="47" Click="btnDash_Click" RenderTransformOrigin="0.216,0.636"/>
-        <Button x:Name="btnFind" Content="Find" HorizontalAlignment="Left" Margin="262,232,0,0" VerticalAlignment="Top" Width="39" Click="btnSave_Click" Height="20" />
+        <Button x:Name="btnFind" Content="Find" HorizontalAlignment="Left" Margin="262,232,0,0" VerticalAlignment="Top" Width="39" Click="btnFind_Click" Height="20" />
 
     </Grid>
 </Window>

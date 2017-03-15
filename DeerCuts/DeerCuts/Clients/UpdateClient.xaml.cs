@@ -19,6 +19,7 @@ namespace DeerCuts.Clients
     /// </summary>
     public partial class UpdateClient : Window
     {
+        int customerID = 0;
         public UpdateClient()
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace DeerCuts.Clients
 
         private void setClientForm(Customer c)
         {
+            customerID = c.getId();
             txtAddress.Text = c.getAddress();
             txtEmail.Text = c.getEmail();
             txtFirstName.Text = c.getFirstName();
@@ -59,9 +61,9 @@ namespace DeerCuts.Clients
                 customer.setPhoneNumber(txtPhone.Text);
                 customer.setPassword(txtPIN.Text);
                 customer.setLogin(txtEmail.Text);
-                customer.setId(123123);
+                customer.setId(customerID);
                 DbMgr db = new DbMgr();
-                Boolean succ = db.save(customer);
+                Boolean succ = db.updateCustomer(customer);
                 if (succ)
                 {
                     ManageClients clients = new ManageClients();

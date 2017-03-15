@@ -47,7 +47,6 @@ namespace DeerCuts.Clients
                 customer.setPhoneNumber(txtPhone.Text);
                 customer.setPassword(txtPIN.Text);
                 customer.setLogin(txtEmail.Text);
-                customer.setId(123123);
                 DbMgr db = new DbMgr();
                 Boolean succ = db.save(customer);
                 if (succ)

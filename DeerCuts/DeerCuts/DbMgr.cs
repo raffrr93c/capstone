@@ -464,4 +464,45 @@ public class DbMgr
         }
 
     }
+
+
+    public bool updateCustomer(Customer customer)
+    {
+        try
+        {
+            MySqlDataReader customerFromDb = null;
+            MySqlCommand command = null;
+            this.connect();
+            if (connection != null)
+            {
+
+                command = connection.CreateCommand();
+                command.CommandText = "UPDATE Customer SET customer_last_name=@lastname, customer_first_name=@firstname, customer_email=@email, customer_address=@address, customer_phone=@phone, customer_license=@license, customer_login=@login, customer_password=@password WHERE customer_id=@customerid";
+                command.Prepare();
+                command.Parameters.AddWithValue("@customerid", customer.getId());
+                command.Parameters.AddWithValue("@firstname", customer.getFirstName());
+                command.Parameters.AddWithValue("@lastname", customer.getLastName());
+                command.Parameters.AddWithValue("@phone", customer.getPhoneNumber());
+                command.Parameters.AddWithValue("@address", customer.getAddress());
+                command.Parameters.AddWithValue("@email", customer.getEmail());
+                command.Parameters.AddWithValue("@license", customer.getLicenseNumber());
+                command.Parameters.AddWithValue("@login", customer.getLogin());
+                command.Parameters.AddWithValue("@password", customer.getPassword());
+                customerFromDb = command.ExecuteReader();
+                command.Dispose();
+                return true;
+            }
+            else
+            {
+                this.close();
+                return false;
+            }
+        }
+        catch (Exception exc)
+        {
+            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
+            return false;
+        }
+
+    }
 }
