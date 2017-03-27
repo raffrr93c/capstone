@@ -34,42 +34,46 @@ namespace DeerCuts.Clients
                 String last = txtLastName.Text;
                 String license = txtLicenseNumber.Text;
                 String phone = txtPhone.Text;
+                Boolean hasMatch = false;
                 DbMgr db = new DbMgr();
                 List<Customer> customers = db.getCustomers();
                 foreach (Customer c in customers)
                 {
                     if(c.getAddress() == address)
                     {
-                        MessageBox.Show("match found" + c.ToString(), "Data found");
                         setClientForm(c);
+                        hasMatch = true;
                     }
                     if (c.getFirstName() == first)
                     {
-                        MessageBox.Show("match found" + c.ToString(), "Data found");
                         setClientForm(c);
+                        hasMatch = true;
                     }
                     if (c.getLastName() == last)
                     {
-                        MessageBox.Show("match found" + c.ToString(), "Data found");
                         setClientForm(c);
+                        hasMatch = true;
                     }
                     if (c.getEmail() == email)
                     {
-                        MessageBox.Show("match found" + c.ToString(), "Data found");
                         setClientForm(c);
+                        hasMatch = true;
                     }
                     if (c.getLicenseNumber() == license)
                     {
-                        MessageBox.Show("match found" + c.ToString(), "Data found");
                         setClientForm(c);
+                        hasMatch = true;
                     }
                     if (c.getPhoneNumber() == phone)
                     {
-                        MessageBox.Show("match found" + c.ToString(), "Data found");
+                        hasMatch = true;
                         setClientForm(c);
                     }
                 }
-
+                if (!hasMatch)
+                {
+                    MessageBox.Show("match not found", "No Data Found");
+                }
             }
             catch(Exception exc)
             {

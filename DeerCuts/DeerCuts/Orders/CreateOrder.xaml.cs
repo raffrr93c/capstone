@@ -23,19 +23,39 @@ namespace DeerCuts.Orders
         {
             InitializeComponent();
             DbMgr db = new DbMgr();
-            //List<Customer> clients = new List<Customer>();//db.getCustomers();
-            //Customer cl = new Customer();
-            //cl.setFirstName("Raff");
-            //clients.Add(cl);
-            //cmbClients.Items.Clear();
-            //cmbClients.ItemsSource = clients;
-            //cmbClients.DisplayMemberPath = Cu
-            cmbClients.Items.Add("Raff");
+            List<Customer> clients = db.getCustomers();
+            foreach (Customer c in clients)
+            {
+                cmbClients.Items.Add(c.getId() + ": " + c.getFirstName() + " " + c.getLastName());
+            }
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                DbMgr db = new DbMgr();
+                Order order = new Order();
+                String cmbVal = cmbClients.SelectedValue.ToString();
+                String[] pieces = cmbVal.Split(':');
 
+                order.setCustomerId(Int32.Parse(pieces[0]));
+                order.setNumberOfDeer(Int32.Parse(txtNumDeer.Text));
+                order.setPickupDate(PickUpDate.DisplayDate);
+                order.setDropoffDate(DropOffDate.DisplayDate);
+                if (db.saveOrder(order))
+                {
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Creation of Order failed!", "Failure!");
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString(), "Exception Occurred");
+            }
         }
 
         private void btnDash_Click(object sender, RoutedEventArgs e)
@@ -43,6 +63,22 @@ namespace DeerCuts.Orders
             Dashboard dash = new Dashboard();
             dash.Show();
             this.Close();
+        }
+
+        private void cmbClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void txtWeight_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void btnIntakeDeer_Click(object sender, RoutedEventArgs e)
+        {
+            CreateDeer createDeer = new CreateDeer();
+            createDeer.Show();
         }
     }
 }

@@ -74,3 +74,5 @@ C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Orders\M
 C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\DeerCuts.g.resources
 C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\DeerCuts.Properties.Resources.resources
 C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\DeerCuts.csproj.GenerateResource.Cache
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Orders\CreateDeer.g.cs
+C:\Users\zabuz\Desktop\SVSU\CapstoneProject\DeerCuts\DeerCuts\obj\Debug\Orders\CreateDeer.baml

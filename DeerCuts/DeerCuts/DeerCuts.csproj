@@ -85,6 +85,9 @@
     <Compile Include="Deer.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="Orders\CreateDeer.xaml.cs">
+      <DependentUpon>CreateDeer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Orders\CreateOrder.xaml.cs">
       <DependentUpon>CreateOrder.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Orders\CreateDeer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

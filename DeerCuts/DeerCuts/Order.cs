@@ -12,9 +12,15 @@ public class Order
     private bool orderComplete;
     [JsonProperty]
     private List<Deer> orderDeer;
-
+    [JsonProperty]
     private int customerId;
-    
+    [JsonProperty]
+    private DateTime PickupDate;
+    [JsonProperty]
+    private DateTime DropoffDate;
+
+    private const float COST_PER_DEER = 40.00f;
+ 
 	public Order()
 	{
         orderDeer = new List<Deer>();
@@ -75,12 +81,27 @@ public class Order
 
     public float getOrderTotal()
     {
-        float total = 0.0f;
-        foreach(Deer deer in orderDeer)
-        {
-            total += deer.getTotal();
-        }
-        return total;
+        return COST_PER_DEER * this.numberOfDeer;
+    }
+
+    public DateTime getDropoffDate()
+    {
+        return this.DropoffDate;
+    }
+
+    public void setDropoffDate(DateTime dropoff)
+    {
+        this.DropoffDate = dropoff;
+    }
+
+    public DateTime getPickupDate()
+    {
+        return this.PickupDate;
+    }
+
+    public void setPickupDate(DateTime pickup)
+    {
+        this.PickupDate = pickup;
     }
 
     public List<Deer> getDeerList()

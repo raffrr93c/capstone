@@ -56,24 +56,6 @@ public class DbMgr
 
     }
 
-    public bool save(Object obj)
-    {
-        try
-        {
-            if (Object.ReferenceEquals(obj.GetType(), typeof(Customer)))
-                return saveCustomer((Customer)obj);
-            if (Object.ReferenceEquals(obj.GetType(), typeof(Employee)))
-                return saveEmployee((Employee)obj);
-            return false;
-        }
-        catch (Exception exc)
-        {
-            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
-            return false;
-        }
-
-    }
-
     public bool deleteEmployee(Employee employee)
     {
         try
@@ -117,48 +99,22 @@ public class DbMgr
 
     }
 
-    private bool saveOrder(Order order)
+    public bool saveOrder(Order order)
     {
         try
         {
-            MySqlDataReader orderFromDb = null;
             MySqlCommand command = null;
             this.connect();
-            if (connection != null)
-            {
-                command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM `Order` WHERE order_id=@orderid";
-                command.Prepare();
-                command.Parameters.AddWithValue("@orderid", order.getId());
-                orderFromDb = command.ExecuteReader();
-            }
-            else
-            {
-                this.close();
-                return false;
-            }
-            if (orderFromDb.Depth != 0)
-            {
-                command = connection.CreateCommand();
-                command.CommandText = "DELETE FROM `Order` WHERE order_id=@orderid";
-                command.Prepare();
-                command.Parameters.AddWithValue("@orderid", order.getId());
-                command.ExecuteNonQuery();
-                orderFromDb.Close();
-                this.close();
-            }
-            foreach (Deer deer in order.getDeerList())
-            {
-                saveDeer(deer);
-            }
-            this.connect();
             command = connection.CreateCommand();
-            command.CommandText = "INSERT INTO `Order` (order_id, number_of_deer, order_status, customer_id) VALUES (@orderid, @numberofdeer, @orderstatus, @customerid)";
+            command.CommandText = "INSERT INTO `Order` (order_id, number_of_deer, order_status, customer_id, total, pickup_date, dropoff_date) VALUES (@orderid, @numberofdeer, @orderstatus, @customerid, @total, @pickup, @dropoff)";
             command.Prepare();
             command.Parameters.AddWithValue("@orderid", order.getId());
             command.Parameters.AddWithValue("@numberofdeer", order.getNumberOfDeer());
             command.Parameters.AddWithValue("@orderstatus", order.getComplete());
             command.Parameters.AddWithValue("@customerid", order.getCustomerId());
+            command.Parameters.AddWithValue("@total", order.getOrderTotal());
+            command.Parameters.AddWithValue("@pickup", order.getPickupDate());
+            command.Parameters.AddWithValue("@dropoff", order.getDropoffDate());
             command.ExecuteNonQuery();
             this.close();
             return true;
@@ -168,47 +124,22 @@ public class DbMgr
             System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return false;
         }
-
     }
 
-    private bool saveDeer(Deer deer)
+    public bool saveDeer(Deer deer)
     {
         try
         {
-            MySqlDataReader deerFromDb = null;
             MySqlCommand command = null;
             this.connect();
-            if (connection != null)
-            {
-                command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM Deer WHERE deer_id=@deerid";
-                command.Prepare();
-                command.Parameters.AddWithValue("@deerid", deer.getTagNumber());
-                deerFromDb = command.ExecuteReader();
-            }
-            else
-            {
-                this.close();
-                return false;
-            }
-            if (deerFromDb.Depth != 0)
-            {
-                command = connection.CreateCommand();
-                command.CommandText = "DELETE FROM Deer WHERE deer_id=@deerid";
-                command.Prepare();
-                command.Parameters.AddWithValue("@deerTagNumber", deer.getTagNumber());
-                command.ExecuteNonQuery();
-                deerFromDb.Close();
-                this.close();
-            }
-            this.connect();
             command = connection.CreateCommand();
-            command.CommandText = "INSERT INTO Deer (deer_id, deer_extra_cost, deer_special_cut, deer_instructions) VALUES (@deerid, @deerextracost, @deerspecialcut, @deerinstructions)";
+            command.CommandText = "INSERT INTO Deer (deer_id, jerky_weight, burger_weight, sausage_weight, steak_weight) VALUES (@deerid, @jerky, @burger, @sausage, @steak)";
             command.Prepare();
             command.Parameters.AddWithValue("@deerid", deer.getTagNumber());
-            command.Parameters.AddWithValue("@deerextracost", deer.getExtraCost());
-            command.Parameters.AddWithValue("@deerspecialcut", deer.getSpecialCut());
-            command.Parameters.AddWithValue("@deerinstructions", deer.getInstructions());
+            command.Parameters.AddWithValue("@jerky", deer.getJerkyWeight());
+            command.Parameters.AddWithValue("@burger", deer.getBurgerWeight());
+            command.Parameters.AddWithValue("@sausage", deer.getSausageWeight());
+            command.Parameters.AddWithValue("@steak", deer.getSteakWeight());
             command.ExecuteNonQuery();
             this.close();
             return true;
@@ -218,49 +149,16 @@ public class DbMgr
             System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return false;
         }
-
     }
 
-    private bool saveCustomer(Customer customer)
+    public bool saveCustomer(Customer customer)
     {
         try
         {
-            MySqlDataReader customerFromDb = null;
             MySqlCommand command = null;
             this.connect();
-            if (connection != null)
-            {
-
-                command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM Customer WHERE customer_id=@customerid";
-                command.Prepare();
-                command.Parameters.AddWithValue("@customerid", customer.getId());
-                customerFromDb = command.ExecuteReader();
-                command.Dispose();
-            }
-            else
-            {
-                this.close();
-                return false;
-            }
-            if (customerFromDb.Depth != 0)
-            {
-                command = connection.CreateCommand();
-                command.CommandText = "DELETE FROM Customer WHERE customer_id=@customerid";
-                command.Prepare();
-                command.Parameters.AddWithValue("@customerid", customer.getId());
-                command.ExecuteReader();
-                command.Dispose();
-                customerFromDb.Close();
-                this.close();
-            }
-            foreach (Order order in customer.getOrderList())
-            {
-                saveOrder(order);
-            }
-            this.connect();
             command = connection.CreateCommand();
-            command.CommandText = "INSERT INTO Customer (customer_id, customer_last_name, customer_first_name, customer_email, customer_address, customer_phone, customer_license, customer_login, customer_password) VALUES (@customerid, @customerfirstname, @customerlastname, @customeremail, @customeraddress, @customerphone, @customerlicense, @customerlogin, @customerpass)";
+            command.CommandText = "INSERT INTO Customer (customer_id, customer_last_name, customer_first_name, customer_email, customer_address, customer_phone, customer_license, customer_login, customer_password) VALUES (@customerid, @customerlastname, @customerfirstname, @customeremail, @customeraddress, @customerphone, @customerlicense, @customerlogin, @customerpass)";
             command.Prepare();
             command.Parameters.AddWithValue("@customerid", customer.getId());
             command.Parameters.AddWithValue("@customerlastname", customer.getLastName());
@@ -280,37 +178,14 @@ public class DbMgr
             System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return false;
         }
-
     }
 
-    private bool saveEmployee(Employee employee)
+    public bool saveEmployee(Employee employee)
     {
         try
         {
-            MySqlDataReader employeeFromDb = null;
             MySqlCommand command = null;
             this.connect();
-            if (connection != null)
-            {
-                command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM Employee WHERE employee_id=@employeeid";
-                command.Prepare();
-                command.Parameters.AddWithValue("@employeeid", employee.getId());
-                employeeFromDb = command.ExecuteReader();
-            }
-            else
-            {
-                this.close();
-                return false;
-            }
-            if (employeeFromDb.Depth != 0)
-            {
-                command = connection.CreateCommand();
-                command.CommandText = "DELETE FROM Employee WHERE employee_id=@employeeid";
-                command.Prepare();
-                command.Parameters.AddWithValue("@employeeid", employee.getId());
-                command.ExecuteNonQuery();
-            }
             command = connection.CreateCommand();
             command.CommandText = "INSERT INTO Employee (employee_id, employee_last_name, employee_first_name, employee_pin) VALUES (@employeeid, @employeelastname, @employeefirstname, @employeepin)";
             command.Prepare();
@@ -335,7 +210,6 @@ public class DbMgr
         try
         {
             MySqlDataReader customersFromDb = null;
-            MySqlDataReader ordersFromDb = null;
             MySqlCommand command = null;
             this.connect();
             if (connection != null)
@@ -400,20 +274,23 @@ public class DbMgr
             System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return new List<Employee>();
         }
-
     }
 
     public List<Order> getOrders()
     {
         try
         {
+            this.connect();
             MySqlDataReader ordersFromDb = null;
             if (connection != null)
             {
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM Order";
-                command.Prepare();
+                command.CommandText = "SELECT * FROM `Order`";
                 ordersFromDb = command.ExecuteReader();
+            }
+            else
+            {
+                return new List<Order>();
             }
             List<Order> tempOrders = new List<Order>();
             while (ordersFromDb.Read())
@@ -421,8 +298,9 @@ public class DbMgr
                 Order tempOrder = new Order();
                 tempOrder.setId(ordersFromDb.GetInt32(0));
                 tempOrder.setNumberOfDeer(ordersFromDb.GetInt32(1));
-                tempOrder.setComplete(ordersFromDb.GetBoolean(2));
                 tempOrder.setCustomerId(ordersFromDb.GetInt32(3));
+                tempOrder.setPickupDate(ordersFromDb.GetDateTime(5));
+                tempOrder.setDropoffDate(ordersFromDb.GetDateTime(6));
             }
             return tempOrders;
         }
@@ -431,7 +309,6 @@ public class DbMgr
             System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
             return new List<Order>();
         }
-
     }
 
     public List<Deer> getDeer()
@@ -442,7 +319,7 @@ public class DbMgr
             if (connection != null)
             {
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM Deer";
+                command.CommandText = "SELECT deer_id, jerky_weight, burger_weight,  sausage_weight, steak_weight FROM Deer";
                 command.Prepare();
                 deerFromDb = command.ExecuteReader();
             }
@@ -451,9 +328,10 @@ public class DbMgr
             {
                 Deer tempDeer = new Deer();
                 tempDeer.setTagNumber (deerFromDb.GetInt32(0));
-                tempDeer.setExtraCost(deerFromDb.GetFloat(1));
-                tempDeer.setSpecialCut(deerFromDb.GetString(2));
-                tempDeer.setInstructions(deerFromDb.GetString(3));
+                tempDeer.setJerkyWeight(deerFromDb.GetFloat(1));
+                tempDeer.setBurgerWeight(deerFromDb.GetFloat(2));
+                tempDeer.setSausageWeight(deerFromDb.GetFloat(3));
+                tempDeer.setSteakWeight(deerFromDb.GetFloat(4));
             }
             return tempDeers;
         }
@@ -464,7 +342,6 @@ public class DbMgr
         }
 
     }
-
 
     public bool updateCustomer(Customer customer)
     {

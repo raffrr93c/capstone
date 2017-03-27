@@ -4,20 +4,17 @@ using System;
 public class Deer
 {
     [JsonProperty]
-    private const float deerCost = 75.0f;
-    [JsonProperty]
     private int deerTagNumber;
     [JsonProperty]
-    private float deerExtraCost;
+    private float burgerWeight;
     [JsonProperty]
-    private string deerSpecialCut;
+    private float jerkyWeight;
     [JsonProperty]
-    private string deerInstructions;
+    private float sausageWeight;
+    [JsonProperty]
+    private float steakWeight;
 
-	public Deer()
-	{
-        this.deerExtraCost = 0.0f;
-	}
+    public Deer() {}
 
     public int getTagNumber()
     {
@@ -29,41 +26,43 @@ public class Deer
         this.deerTagNumber = tagNumber;
     }
 
-    public float getExtraCost()
+    public float getJerkyWeight()
     {
-        return this.deerExtraCost;
+        return this.jerkyWeight;
     }
 
-    public void setExtraCost(float extraCost)
+    public void setJerkyWeight(float jerkyWeight)
     {
-        this.deerExtraCost = extraCost;
+        this.jerkyWeight = jerkyWeight;
     }
 
-    public string getSpecialCut()
+    public float getBurgerWeight()
     {
-        return this.deerSpecialCut;
+        return this.burgerWeight;
     }
 
-    public void setSpecialCut(string specialCut)
+    public void setBurgerWeight(float burgerWeight)
     {
-        this.deerSpecialCut = specialCut;
+        this.burgerWeight = burgerWeight;
     }
 
-    public string getInstructions()
+    public float getSteakWeight()
     {
-        return this.deerInstructions;
+        return this.steakWeight;
     }
 
-    public void setInstructions(string instructions)
+    public void setSteakWeight(float steakWeight)
     {
-        this.deerInstructions = instructions;
+        this.steakWeight = steakWeight;
     }
 
-    public float getTotal()
+    public float getSausageWeight()
     {
-        float total = 0.0f;
-        total += deerCost;
-        total += this.getExtraCost();
-        return total;
+        return this.sausageWeight;
+    }
+
+    public void setSausageWeight(float sausageWeight)
+    {
+        this.sausageWeight = sausageWeight;
     }
 }
