@@ -19,6 +19,8 @@ namespace DeerCuts.Orders
     /// </summary>
     public partial class CreateOrder : Window
     {
+        Order order = new Order();
+
         public CreateOrder()
         {
             InitializeComponent();
@@ -35,7 +37,6 @@ namespace DeerCuts.Orders
             try
             {
                 DbMgr db = new DbMgr();
-                Order order = new Order();
                 String cmbVal = cmbClients.SelectedValue.ToString();
                 String[] pieces = cmbVal.Split(':');
 
@@ -45,6 +46,8 @@ namespace DeerCuts.Orders
                 order.setDropoffDate(DropOffDate.DisplayDate);
                 if (db.saveOrder(order))
                 {
+                    Dashboard dash = new Dashboard();
+                    dash.Show();
                     this.Close();
                 }
                 else
@@ -75,10 +78,34 @@ namespace DeerCuts.Orders
 
         }
 
+        void clearDeerFields()
+        {
+            txtSteak.Text = "";
+            txtSausage.Text = "";
+            txtJerky.Text = "";
+            txtBurger.Text = "";
+            txtWeight.Text = "";
+            txtTagNumber.Text = "";
+        }
+
         private void btnIntakeDeer_Click(object sender, RoutedEventArgs e)
         {
-            CreateDeer createDeer = new CreateDeer();
-            createDeer.Show();
+            try
+            {
+                Deer deer = new Deer();
+                deer.setBurgerWeight(float.Parse(txtBurger.Text));
+                deer.setJerkyWeight(float.Parse(txtJerky.Text));
+                deer.setSausageWeight(float.Parse(txtSausage.Text));
+                deer.setSteakWeight(float.Parse(txtSteak.Text));
+                deer.setTagNumber(int.Parse(txtTagNumber.Text));
+                deer.setWeight(float.Parse(txtWeight.Text));
+                order.addDeer(deer);
+                clearDeerFields();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString(), "Exception Occurred");
+            }
         }
     }
 }

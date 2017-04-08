@@ -117,6 +117,52 @@ public class DbMgr
             command.Parameters.AddWithValue("@dropoff", order.getDropoffDate());
             command.ExecuteNonQuery();
             this.close();
+
+            this.connect();
+            command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM `Order` WHERE number_of_deer=@numberofdeer and order_status=@orderstatus and customer_id=@customerid and total=@total and pickup_date=@pickup and dropoff_date=@dropoff";
+            command.Prepare();
+            command.Parameters.AddWithValue("@orderid", order.getId());
+            command.Parameters.AddWithValue("@numberofdeer", order.getNumberOfDeer());
+            command.Parameters.AddWithValue("@orderstatus", order.getComplete());
+            command.Parameters.AddWithValue("@customerid", order.getCustomerId());
+            command.Parameters.AddWithValue("@total", order.getOrderTotal());
+            command.Parameters.AddWithValue("@pickup", order.getPickupDate());
+            command.Parameters.AddWithValue("@dropoff", order.getDropoffDate());
+            MySqlDataReader orderFromTable = command.ExecuteReader();
+            orderFromTable.Read();
+            int orderID = orderFromTable.GetInt32(0);
+            this.close();
+
+            System.Windows.MessageBox.Show(orderID.ToString(), "ORDER");
+            foreach (Deer deer in order.getDeerList())
+            {
+                saveDeer(deer);
+                assocDeerOrder(deer, orderID);
+            }
+            
+            return true;
+        }
+        catch (Exception exc)
+        {
+            System.Windows.MessageBox.Show(exc.ToString(), "Exception Occurred");
+            return false;
+        }
+    }
+
+    public bool assocDeerOrder(Deer deer, int order)
+    {
+        try
+        {
+            MySqlCommand command = null;
+            this.connect();
+            command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO DeerInOrder (deer_id, order_id) VALUES (@deerid, @order_id)";
+            command.Prepare();
+            command.Parameters.AddWithValue("@deerid", deer.getTagNumber());
+            command.Parameters.AddWithValue("@order_id", order);
+            command.ExecuteNonQuery();
+            this.close();
             return true;
         }
         catch (Exception exc)
@@ -133,9 +179,10 @@ public class DbMgr
             MySqlCommand command = null;
             this.connect();
             command = connection.CreateCommand();
-            command.CommandText = "INSERT INTO Deer (deer_id, jerky_weight, burger_weight, sausage_weight, steak_weight) VALUES (@deerid, @jerky, @burger, @sausage, @steak)";
+            command.CommandText = "INSERT INTO Deer (deer_id, jerky_weight, burger_weight, sausage_weight, steak_weight, weight) VALUES (@deerid, @jerky, @burger, @sausage, @steak, @weight)";
             command.Prepare();
             command.Parameters.AddWithValue("@deerid", deer.getTagNumber());
+            command.Parameters.AddWithValue("@weight", deer.getWeight());
             command.Parameters.AddWithValue("@jerky", deer.getJerkyWeight());
             command.Parameters.AddWithValue("@burger", deer.getBurgerWeight());
             command.Parameters.AddWithValue("@sausage", deer.getSausageWeight());

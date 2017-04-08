@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DeerCuts.Orders"
         mc:Ignorable="d"
         Style="{DynamicResource bgdGrey}"
-        Title="CreateOrder" Height="282.042" Width="253.308">
+        Title="CreateOrder" Height="452.117" Width="536.308">
     <Grid Margin="0,0,22,0">
         <Label x:Name="label_Copy6" Content="# Deer" HorizontalAlignment="Left" Margin="20,143,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtNumDeer" HorizontalAlignment="Left" Height="23" Margin="93,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -18,7 +18,19 @@
         <DatePicker x:Name="PickUpDate" HorizontalAlignment="Left" Height="38" Margin="93,94,0,0" VerticalAlignment="Top" Width="120" />
         <Label x:Name="label1_Copy" Content="Drop Off" HorizontalAlignment="Left" Margin="8,46,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1_Copy1" Content="Pick Up" HorizontalAlignment="Left" Margin="13,94,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnIntakeDeer" Content="Intake Deer" HorizontalAlignment="Left" Height="20" Margin="93,171,0,0" VerticalAlignment="Top" Width="120" Click="btnIntakeDeer_Click"/>
+        <Button x:Name="btnIntakeDeer" Content="Intake Deer" HorizontalAlignment="Left" Height="20" Margin="296,117,0,0" VerticalAlignment="Top" Width="192" Click="btnIntakeDeer_Click"/>
+        <Label x:Name="label" Content="Jerky" HorizontalAlignment="Left" Margin="242,39,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtJerky" HorizontalAlignment="Left" Height="23" Margin="296,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
+        <Label x:Name="label_Copy3" Content="Burger" HorizontalAlignment="Left" Margin="234,70,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBurger" HorizontalAlignment="Left" Height="23" Margin="296,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
+        <Label x:Name="label_Copy4" Content="Steak" HorizontalAlignment="Left" Margin="384,12,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtSteak" HorizontalAlignment="Left" Height="23" Margin="440,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
+        <Label x:Name="label_Copy" Content="Sausage" HorizontalAlignment="Left" Margin="362,39,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtSausage" HorizontalAlignment="Left" Height="23" Margin="440,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
+        <Label x:Name="label_Copy1" Content="Weight" HorizontalAlignment="Left" Margin="230,15,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtWeight" HorizontalAlignment="Left" Height="23" Margin="296,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
+        <Label x:Name="label_Copy2" Content="Tag ID" HorizontalAlignment="Left" Margin="378,74,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtTagNumber" HorizontalAlignment="Left" Height="23" Margin="440,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
 
     </Grid>
 </Window>

@@ -13,6 +13,8 @@ public class Deer
     private float sausageWeight;
     [JsonProperty]
     private float steakWeight;
+    [JsonProperty]
+    private float overallWeight;
 
     public Deer() {}
 
@@ -29,6 +31,16 @@ public class Deer
     public float getJerkyWeight()
     {
         return this.jerkyWeight;
+    }
+
+    public float getWeight()
+    {
+        return this.overallWeight;
+    }
+
+    public void setWeight(float weight)
+    {
+        this.overallWeight = weight;
     }
 
     public void setJerkyWeight(float jerkyWeight)
